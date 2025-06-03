@@ -21,7 +21,7 @@ import utils.CommonUtils;
 public class TC_RF_001 {
 
 	@Test(priority=1)
-	public void verifyRegisteringWithMandatoryFields() {
+	public void verifyRegisteringWithMandatoryFields() throws InterruptedException {
 		
 		WebDriver driver = new ChromeDriver();
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
@@ -31,8 +31,8 @@ public class TC_RF_001 {
 		driver.findElement(By.xpath("//span[text()='My Account']")).click();
 		driver.findElement(By.linkText("Register")).click();
 		
-		driver.findElement(By.id("input-firstname")).sendKeys("Arun");
-		driver.findElement(By.id("input-lastname")).sendKeys("Motoori");
+		driver.findElement(By.id("input-firstname")).sendKeys("Duc");
+		driver.findElement(By.id("input-lastname")).sendKeys("Nguyen");
 		driver.findElement(By.id("input-email")).sendKeys(CommonUtils.generateBrandNewEmail());
 		driver.findElement(By.id("input-telephone")).sendKeys("1234567890");
 		driver.findElement(By.id("input-password")).sendKeys("12345");
@@ -61,6 +61,8 @@ public class TC_RF_001 {
 		driver.findElement(By.xpath("//a[text()='Continue']")).click();
 		
 		Assert.assertTrue(driver.findElement(By.linkText("Edit your account information")).isDisplayed());
+		
+		Thread.sleep(5000); 
 		
 		driver.quit();
 		
